@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Blog - Animation Data</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: #0a0a23;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+        /* Animation de fond avec particules "data" */
+        .data-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e1e3f, #2a4066, #3a6b9f);
+            background-size: 400% 400%;
+            animation: dataFlow 15s ease infinite;
+            z-index: -1;
+        }
+        @keyframes dataFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* Particules animées */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        }
+        header {
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            animation: slideIn 1s ease-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #00d4ff;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+        }
+        h2 {
+            font-size: 1.8em;
+            margin: 30px 0 15px;
+            color: #fff;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #00d4ff; }
+            to { text-shadow: 0 0 15px #00d4ff, 0 0 25px #00d4ff; }
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+        .post {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            animation: dataPulse 2s infinite alternate;
+        }
+        @keyframes dataPulse {
+            from { transform: scale(0.98); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
+            to { transform: scale(1); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5); }
+        }
+        .post h2 {
+            color: #000; /* Noir pour "Massar Mahamat" */
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0 0 10px;
+        }
+        a {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 16px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: buttonPop 1.5s ease infinite;
+        }
+        a:hover {
+            transform: scale(1.1);
+        }
+        @keyframes buttonPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 20px auto;
+            border: 5px solid #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+            animation: spinGlow 4s infinite linear;
+        }
+        @keyframes spinGlow {
+            0% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.8); }
+            50% { box-shadow: 0 0 30px rgba(0, 212, 255, 1); }
+            100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.8); }
+        }
+        .counter-buttons {
+            margin: 20px 0;
+        }
+        .counter-btn {
+            background: linear-gradient(135deg, #00d4ff, #0078d4);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 5px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .counter-btn:hover {
+            transform: scale(1.05);
+        }
+        .counter-btn:disabled {
+            background: #555;
+            cursor: not-allowed;
+        }
+        footer {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            border-radius: 20px 20px 0 0;
+            margin-top: 40px;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+        @keyframes fadeInUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+    <!-- Google Fonts pour Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Calendly link widget -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+</head>
+<body>
+    <div class="data-particles">
+        <!-- Particules dynamiques -->
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 4s;"></div>
+    </div>
+    <header>
+        <h1>Bienvenue sur Mon Blog</h1>
+    </header>
+    <img src="ma_photo.jpg" alt="Ma photo" class="profile-pic">
+    <div class="container">
+        <div class="post" id="post-1">
+            <h2>Massar Mahamat</h2>
+            <p>Formateur | Consultant BI | Data Engineer | Business Analyst | Tech Ambassadeur</p>
+            <div class="counter-buttons">
+                <button class="counter-btn">👁️ Vues : <span id="viewCount-post-1">0</span></button>
+                <button class="counter-btn" onclick="incrementLikes('post-1')" id="likeBtn-post-1">❤️ J'aime : <span id="likeCount-post-1">0</span></button>
+            </div>
+        </div>
+    </div>
+    
+    <h2>Retrouvez-moi sur :</h2>
+    <a href="https://www.youtube.com/@Massar_Formation" target="_blank" style="background: #ff0000;">📺 YouTube</a>
+    <a href="https://www.udemy.com/user/massar-mahamat-2/" target="_blank" style="background: #a435f0;">🎓 Udemy</a>
+    <a href="https://github.com/Massar321" target="_blank" style="background: #181717;">🐙 GitHub</a>
+    <a href="https://gitlab.com/Massar111" target="_blank" style="background: #fc6d26;">🦊 GitLab</a>
+    <a href="https://www.linkedin.com/in/mahamat-ali-massar-9a7a81116/" target="_blank" style="background: #0077b5;">💼 LinkedIn</a>
+    <a href="https://medium.com/@mahamatalimassar_27932" target="_blank" style="background: #121212;">📝 Medium</a>
+    <a href="https://substack.com/@massarmahamat" target="_blank" style="background: #ff6719;">✍️ Substack</a>
+
+    <h2>Contactez-moi :</h2>
+    <a href="mailto:massar.mhd.ali@gmail.com" style="background: #d44638;">📩 Gmail</a>
+    <a href="mailto:massar.mhd.ali@outlook.com" style="background: #0072c6;">📩 Outlook</a>
+    <a href="https://wa.me/0753155965" target="_blank" style="background: #25d366;">📲 WhatsApp</a>
+    <a href="tel:0753155965" style="background: #008cba;">📞 0753155965</a>
+
+    <h2>En savoir plus :</h2>
+    <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/massar-mhd-ali-ie-l/rendez-vous-formation'});return false;" style="background: #006edc;">📅 Prendre un rendez-vous</a>
+    <a href="MASSAR-BI.pdf" download style="background: #4caf50;">📄 Télécharger mon CV</a>
+
+    <footer>
+        <p>© 2025 Mon Blog - Tous droits réservés</p>
+    </footer>
+
+    <script>
+        function incrementViews(postId) {
+            let sessionKey = "viewed_" + postId;
+            if (!sessionStorage.getItem(sessionKey)) {
+                let views = localStorage.getItem("viewCount-" + postId) || 0;
+                views = parseInt(views) + 1;
+                localStorage.setItem("viewCount-" + postId, views);
+                document.getElementById("viewCount-" + postId).innerText = views;
+                sessionStorage.setItem(sessionKey, true);
+            }
+        }
+
+        function incrementLikes(postId) {
+            let sessionKey = "liked_" + postId;
+            let likeBtn = document.getElementById("likeBtn-" + postId);
+            if (!sessionStorage.getItem(sessionKey)) {
+                let likes = localStorage.getItem("likeCount-" + postId) || 0;
+                likes = parseInt(likes) + 1;
+                localStorage.setItem("likeCount-" + postId, likes);
+                document.getElementById("likeCount-" + postId).innerText = likes;
+                sessionStorage.setItem(sessionKey, true);
+                likeBtn.disabled = true;
+            }
+        }
+
+        window.onload = function() {
+            const posts = ["post-1"];
+            posts.forEach(postId => {
+                document.getElementById("viewCount-" + postId).innerText = localStorage.getItem("viewCount-" + postId) || 0;
+                document.getElementById("likeCount-" + postId).innerText = localStorage.getItem("likeCount-" + postId) || 0;
+                if (sessionStorage.getItem("liked_" + postId)) {
+                    document.getElementById("likeBtn-" + postId).disabled = true;
+                }
+                incrementViews(postId);
+            });
+        }
+    </script>
+</body>
+</html>
